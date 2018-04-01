@@ -3,9 +3,10 @@
     <h1>{{msg}}</h1>
 
     <v-layout>
-      <v-flex sm6 offset-sm3>
+      <v-flex sm6>
             <v-list subheader>
-            <v-subheader>Tasks</v-subheader>
+            <v-subheader>To Do</v-subheader>
+            <h1 v-if="tasks.length==0">Nothing to do </h1>
               <v-list-tile  v-for="(task, index) in tasks">
                 <v-list-tile-action>
                   <v-checkbox v-model="task.complete"></v-checkbox>
@@ -28,9 +29,12 @@
                 label='Insert new task name'
                 single-line
                 append-icon="add"
-              ></v-text-field>
+                ></v-text-field>
             </v-flex>
           </v-form>
+      </v-flex>
+      <v-flex sm6>
+        
       </v-flex>
     </v-layout>
   </div>
@@ -41,11 +45,18 @@ export default {
   name: 'Timer',
   data () {
     return {
-      msg: 'Pomodoro Timer',
+      msg: 'Setup your Pomodoro Timer',
       taskName: '',
       tasks: [
         
-      ]
+      ],
+      rules: {
+          required: (value) => !!value || 'Required.',
+          email: (value) => {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            return pattern.test(value) || 'Invalid e-mail.'
+      }
+      }
     }
   },
   methods: {
