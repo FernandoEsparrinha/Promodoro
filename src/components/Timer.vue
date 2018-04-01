@@ -14,7 +14,7 @@
                   <v-list-tile-title>{{ task.value }}</v-list-tile-title>
                 </v-list-tile-content>
                 <v-list-tile-action>
-                  <v-btn icon @click.native="removeTask(index)">
+                  <v-btn icon v-on:click.native="removeTask(index)">
                     <v-icon color="grey lighten-1">close</v-icon>
                   </v-btn>
                 </v-list-tile-action>
@@ -58,7 +58,7 @@ export default {
       this.taskName = ''
     },
     removeTask (index) {
-      this.tasks.slice(index)
+      this.tasks.splice(index, 1)
     }
   }
 }
