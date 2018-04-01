@@ -7,7 +7,17 @@ import router from './router'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: "#E53935",
+    secondary: "#B71C1C",
+    accent: "#B71C1C",
+    error: "#f44336",
+    warning: "#ffeb3b",
+    info: "#2196f3",
+    success: "#4caf50"
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

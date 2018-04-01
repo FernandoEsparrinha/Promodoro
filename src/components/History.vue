@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 class="display-2">{{title}}</h1>
+    <hr>
   </div>
 </template>
 
@@ -9,7 +10,7 @@ export default {
   name: 'History',
   data () {
     return {
-      msg: 'Pomodoro History'
+      title: 'Pomodoro History'
     }
   }
 }
@@ -17,8 +18,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+h1{
+  margin-bottom: 15px;
 }
 ul {
   list-style-type: none;

@@ -1,7 +1,7 @@
 <template>
   <div class="timerFrame">
-    <h1>{{msg}}</h1>
-
+    <h1 class="display-2">{{title}}</h1>
+    <hr>
     <v-layout>
       <v-flex sm6>
             <v-list subheader>
@@ -34,6 +34,32 @@
           </v-form>
       </v-flex>
       <v-flex sm6>
+        <v-card color="red darken-4" class="white--text">
+              <v-card-title primary-title>
+                <div class="headline">Choose duration of session</div>
+                <div>Recomended is 25 minutes, altough you may want to choose another time.</div>
+              </v-card-title>
+              <v-card-actions>
+                <v-radio-group v-model="radioGroup">
+                  <v-radio
+                    :key="1"
+                    :label="'10:00'"
+                    :value="'10:00'"
+                  ></v-radio>
+                  <v-radio
+                    :key="2"
+                    :label="'15:00'"
+                    :value="'15:00'"
+                  ></v-radio>
+                  <v-radio
+                    :key="3"
+                    :label="'20:00'"
+                    :value="'20:00'"
+                  ></v-radio>
+                </v-radio-group>
+              </v-card-actions>
+            </v-card>
+        
         
       </v-flex>
     </v-layout>
@@ -45,18 +71,11 @@ export default {
   name: 'Timer',
   data () {
     return {
-      msg: 'Setup your Pomodoro Timer',
+      title: 'Setup your Pomodoro Timer',
       taskName: '',
       tasks: [
         
-      ],
-      rules: {
-          required: (value) => !!value || 'Required.',
-          email: (value) => {
-            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            return pattern.test(value) || 'Invalid e-mail.'
-      }
-      }
+      ]
     }
   },
   methods: {
@@ -77,8 +96,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+
+h1{
+  margin-bottom: 15px;
 }
 ul {
   list-style-type: none;
